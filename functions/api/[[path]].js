@@ -440,8 +440,8 @@ async function handleAdminUsers(context, currentSession) {
   if (method === "GET") {
     const result = await database
       .prepare(
-        "SELECT username, created_at " +
-        "FROM users ORDER BY username"
+        "SELECT username, created_at, expires_at " +
+"FROM users ORDER BY username"
       )
       .all();
 
