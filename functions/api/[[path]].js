@@ -166,6 +166,39 @@ function isValidUsername(username) {
 }
 
 function getChangedRows(result) {
+   const DAY_MS = 24 * 60 * 60 * 1000;
+
+function calculateExpiry(requestBody) {
+
+  const durationType = String(
+    requestBody.duration_type || "30"
+  );
+
+  if (durationType === "unlimited") {
+    return null;
+  }
+
+  if (durationType === "custom") {
+
+    const expiresDate = String(
+      requestBody.expires_date || ""
+    );
+
+    if (!expiresDate) {
+      throw new Error(
+        "Bitte ein Ablaufdatum wählen."
+      );
+    }
+
+    return new Date(
+      expiresDate + "T23:59:59"
+    ).getTime();
+  }
+
+  const days = Number(durationType);
+
+  return Date.now() + days * DAY_MS;
+}
   const changes = result?.meta?.changes;
 
   if (typeof changes === "number") {
@@ -501,6 +534,20 @@ async function handleAdminUsers(context, currentSession) {
   }
 
   if (method === "POST") {
+     let expiresAt;
+
+try {
+  expiresAt = calculateExpiry(
+    requestBody
+  );
+}
+catch(ex) {
+
+  return errorResponse(
+    ex.message,
+    400
+  );
+}
     const existingUser = await database
       .prepare(
         "SELECT username FROM users WHERE username = ?"
@@ -519,14 +566,15 @@ async function handleAdminUsers(context, currentSession) {
       await database
         .prepare(
           "INSERT INTO users " +
-          "(username, salt, password_hash, created_at) " +
-          "VALUES (?, ?, ?, ?)"
+"(username, salt, password_hash, created_at, expires_at) " +
+"VALUES (?, ?, ?, ?, ?)"
         )
         .bind(
           username,
           salt,
           passwordHash,
           Date.now()
+           expiresAt
         )
         .run();
 
