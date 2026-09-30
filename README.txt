@@ -21,3 +21,4 @@ Sicherheit: Passwort-Hashes werden mit PBKDF2 und individuellem Salt gespeichert
 Bilder: Historische Rider-Waite-Smith-JPGs werden von Wikimedia Commons geladen; die Karten benötigen Internet. Die Schumann-Resonanz wird als typischer Hintergrundwert (ca. 7,83 Hz), nicht als Live-Messung dargestellt. Mondphase wird näherungsweise berechnet; Tagesimpuls ist eine datumsabhängige Reflexion, keine Vorhersage.
 
 Nicht durchgeführt: Bereitstellung in deinem Cloudflare-Konto, weil kein Zugriff auf dein Konto und keine D1-ID vorhanden ist. Teste Login und Benutzerverwaltung nach dem Einrichten über die Pages-Domain (nicht per file://).
+
