@@ -22,3 +22,4 @@ Bilder: Historische Rider-Waite-Smith-JPGs werden von Wikimedia Commons geladen;
 
 Nicht durchgeführt: Bereitstellung in deinem Cloudflare-Konto, weil kein Zugriff auf dein Konto und keine D1-ID vorhanden ist. Teste Login und Benutzerverwaltung nach dem Einrichten über die Pages-Domain (nicht per file://).
 
+
