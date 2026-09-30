@@ -164,9 +164,7 @@ function isRequestOriginValid(request) {
 function isValidUsername(username) {
   return /^[A-Za-z0-9._-]{3,32}$/.test(username);
 }
-
-function getChangedRows(result) {
-   const DAY_MS = 24 * 60 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
 
 function calculateExpiry(requestBody) {
 
@@ -199,6 +197,8 @@ function calculateExpiry(requestBody) {
 
   return Date.now() + days * DAY_MS;
 }
+function getChangedRows(result) {
+   
   const changes = result?.meta?.changes;
 
   if (typeof changes === "number") {
@@ -573,7 +573,7 @@ catch(ex) {
           username,
           salt,
           passwordHash,
-          Date.now()
+          Date.now(),
            expiresAt
         )
         .run();
