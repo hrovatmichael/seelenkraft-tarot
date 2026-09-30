@@ -728,22 +728,70 @@ export async function onRequest(context) {
       );
     }
 
-    if (
-      route === "/api/member" &&
-      request.method === "GET"
-    ) {
-      if (!currentSession) {
-        return errorResponse(
-          "Bitte anmelden.",
-          401
-        );
-      }
+   if (
+  route === "/api/member" &&
+  request.method === "GET"
+) {
+  if (!currentSession) {
+    return errorResponse(
+      "Bitte anmelden.",
+      401
+    );
+  }
 
-      return json({
-        ...memberData,
-        role: currentSession.role
-      });
+  let expiresAt = null;
+
+  if (currentSession.role === "member") {
+    const userAccess = await context.env.DB
+      .prepare(
+        "SELECT expires_at " +
+        "FROM users " +
+        "WHERE username = ?"
+      )
+      .bind(currentSession.username)
+      .first();
+
+    if (!userAccess) {
+      return errorResponse(
+        "Dieser Zugang ist nicht mehr vorhanden.",
+        401
+      );
     }
+
+    expiresAt = userAccess.expires_at ?? null;
+
+    if (
+      expiresAt !== null &&
+      Number(expiresAt) <= Date.now()
+    ) {
+      await context.env.DB.batch([
+        context.env.DB
+          .prepare(
+            "DELETE FROM sessions WHERE username = ?"
+          )
+          .bind(currentSession.username),
+
+        context.env.DB
+          .prepare(
+            "DELETE FROM users WHERE username = ?"
+          )
+          .bind(currentSession.username)
+      ]);
+
+      return errorResponse(
+        "Dieser Zugang ist abgelaufen.",
+        401
+      );
+    }
+  }
+
+  return json({
+    ...memberData,
+    role: currentSession.role,
+    username: currentSession.username,
+    expires_at: expiresAt
+  });
+}
 
     if (route === "/api/admin/users") {
       return await handleAdminUsers(
