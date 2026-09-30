@@ -1,156 +1,163 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Seelenkraft</title><style>*{box-sizing:border-box}body{margin:0;min-height:100svh;background:radial-gradient(ellipse 75% 35% at 50% -5%,#53375c,transparent 80%),#0e0a16;color:#f6efe8;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:18px 16px 70px}.top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:10px 0 22px}.brand{color:#ead09e;letter-spacing:.18em;font-size:11px;font-weight:800}.nav{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}.nav a,.logout{color:#d9cbd9;text-decoration:none;border:1px solid #ffffff18;border-radius:99px;padding:8px 12px;background:#ffffff08;font-size:12px}.nav a.active{color:#28192c;background:linear-gradient(120deg,#f4dca3,#bd94d2);border-color:#f8dfa5;font-weight:800}.logout{color:#f0dab0;cursor:pointer}.hero{text-align:center;margin:22px auto 30px}.hero h1{font:normal clamp(42px,7vw,68px)/1 Georgia,serif;color:#f7e4c5;margin:10px}.hero p{max-width:720px;margin:auto;color:#cbbfce;line-height:1.7}.eyebrow{font-size:11px;letter-spacing:.16em;color:#e9c990;font-weight:800}.panel{border:1px solid #e7c9894d;background:#ffffff0b;border-radius:20px;box-shadow:0 14px 42px #0005;padding:22px}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.tile{min-height:145px;text-decoration:none;color:inherit;display:flex;flex-direction:column;justify-content:flex-end;transition:.2s}.tile:hover{transform:translateY(-2px);border-color:#edcf9670}.tile .icon{font-size:29px}.tile h2,.panel h2{font:normal 25px Georgia,serif;color:#f1d9a7;margin:7px 0}.tile p,.panel p{color:#cbbfce;line-height:1.55;margin:3px 0}.btn{border:1px solid #e4c98b6a;border-radius:99px;background:#ffffff0b;color:#f0dab0;padding:9px 14px;cursor:pointer}.cta{background:linear-gradient(120deg,#f4dca3,#bd94d2);color:#28192c;font-weight:800}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.dow,.day{padding:9px 5px;text-align:center;border-radius:10px}.dow{color:#e9c990;font-size:11px}.day{min-height:48px;background:#ffffff06;color:#bfb2c1}.day.portal{background:linear-gradient(145deg,#bd94d229,#e9c9901c);border:1px solid #d9b6e255;color:#fff;font-weight:800}.day.today{outline:2px solid #f4dca3}.month{margin:18px 0}.month h3{font:normal 25px Georgia,serif;color:#f1d9a7}.gate{max-width:800px;margin:18px auto}.gate blockquote{border-left:3px solid #bd94d2;margin:18px 0;padding:18px;background:#bd94d20b;font:normal 19px/1.7 Georgia,serif}.big{font:normal 74px Georgia,serif;color:#f4d9a7}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.hidden{display:none!important}label{display:block;color:#e7d3b7;font-size:12px}input,select{width:100%;padding:11px;border-radius:11px;border:1px solid #cba97c70;background:#0d0915;color:white;margin-top:6px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.user{display:flex;justify-content:space-between;gap:12px;padding:14px;margin-top:9px;border:1px solid #ffffff17;border-radius:14px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.cards img{width:100%;max-width:190px;aspect-ratio:825/1429;object-fit:cover;border:3px solid #caa56b;border-radius:9px}@media(max-width:850px){.top{grid-template-columns:1fr}.nav{justify-content:flex-start}.tiles{grid-template-columns:repeat(2,1fr)}.grid2,.form{grid-template-columns:1fr}}@media(max-width:540px){.tiles{grid-template-columns:1fr}.calendar{gap:2px}.day{min-height:40px;padding:7px 2px}}
-.login-shell{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-bottom:20px}.login-card,.draw-card{min-height:430px;display:flex;flex-direction:column;justify-content:center}.login-card h2,.draw-card h2{font:normal 32px Georgia,serif;color:#f1d9a7}.login-card label{margin-top:14px}.password-wrap{position:relative}.password-wrap input{padding-right:52px}.eye{position:absolute;right:7px;bottom:5px;width:40px;height:36px;border:0;border-radius:9px;background:transparent;color:#ead09e;font-size:18px;cursor:pointer}.eye:hover{background:#ffffff0d}.login-card .cta{width:100%;margin-top:18px}.error{color:#ffb7b5;min-height:22px}.single-card{width:min(160px,48vw);aspect-ratio:825/1429;margin:15px auto}.single-card img{width:100%;height:100%;object-fit:cover;border:3px solid #caa56b;border-radius:9px;box-shadow:0 20px 40px #0008}.single-result{text-align:center}.portal-only{display:none}.authenticated .portal-only{display:block}.authenticated .guest-only{display:none}.calendar .day{cursor:default}.calendar .day.portal{cursor:pointer}.calendar .day.portal:hover{transform:translateY(-1px);filter:brightness(1.2)}.calendar-legend{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0;color:#cbbfce;font-size:12px}.legend-dot{width:12px;height:12px;border-radius:4px;display:inline-block;margin-right:5px;background:linear-gradient(145deg,#bd94d229,#e9c9901c);border:1px solid #d9b6e255}.selected-day{outline:2px solid #bd94d2!important}.admin-actions{display:flex;gap:7px;flex-wrap:wrap}.admin-actions button{border:1px solid #d7bb8b80;border-radius:9px;background:#21152c;color:#f0d8ab;padding:8px;cursor:pointer}.statusline{min-height:22px;color:#ead09e}.search{margin:16px 0}.top .access-mini{color:#bfe2c6;font-size:11px}@media(max-width:850px){.login-shell{grid-template-columns:1fr}.login-card,.draw-card{min-height:auto}}
-.moon-phase-card{
-    text-align:center;
-    margin-bottom:25px;
-}
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d0915">
+  <title>Mondphase | Seelenkraft Tarot</title>
+  <style>
+    :root{--bg:#0d0915;--panel:#171020;--panel2:#20142b;--gold:#efd49b;--gold2:#b98b4f;--violet:#bd94d2;--text:#f8f1ea;--muted:#cbbfce;--green:#8ed19c;--rose:#e5a4a4;--line:#ffffff18;--shadow:0 24px 80px #0008}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100svh;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse 80% 40% at 50% -8%,#60406c 0,transparent 72%),radial-gradient(circle at 85% 28%,#39214455,transparent 32%),var(--bg)}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;background-image:radial-gradient(#fff 0.7px,transparent .8px);background-size:37px 37px;mask-image:linear-gradient(#000,transparent 78%)}
+    button,a{font:inherit}.wrap{position:relative;max-width:1180px;margin:auto;padding:18px 18px 72px}.top{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:10px 0 24px}.brand{color:var(--gold);letter-spacing:.18em;font-size:11px;font-weight:800;white-space:nowrap}.nav{display:flex;justify-content:center;gap:7px;flex-wrap:wrap}.nav a,.logout{color:#ddd0df;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#ffffff08;font-size:12px;transition:.2s}.nav a:hover,.logout:hover{border-color:#efd49b66;background:#ffffff10}.nav a.active{color:#28192c;background:linear-gradient(120deg,#f4dca3,#bd94d2);border-color:#f8dfa5;font-weight:800}.logout{color:#f0dab0;cursor:pointer}
+    .hero{text-align:center;margin:28px auto 32px}.eyebrow{font-size:11px;letter-spacing:.2em;color:#e9c990;font-weight:800}.hero h1{font:normal clamp(42px,7vw,72px)/1.04 Georgia,serif;color:#f7e4c5;margin:12px 0}.hero p{max-width:760px;margin:auto;color:var(--muted);line-height:1.75}.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#8ed19c;box-shadow:0 0 12px #8ed19c;margin-right:7px}
+    .panel{border:1px solid #e7c9893b;background:linear-gradient(150deg,#ffffff0e,#ffffff07);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.moon-main{display:grid;grid-template-columns:minmax(270px,.86fr) 1.14fr;overflow:hidden}.visual{position:relative;min-height:500px;display:grid;place-items:center;padding:32px;background:radial-gradient(circle at 50% 48%,#be9cd32e,transparent 43%),linear-gradient(160deg,#261731,#100b18)}.visual:after{content:"";position:absolute;inset:20px;border:1px solid #ffffff0d;border-radius:18px;pointer-events:none}.moon-orbit{position:relative;width:min(310px,78vw);aspect-ratio:1;border:1px solid #deb8ef30;border-radius:50%;display:grid;place-items:center;box-shadow:0 0 70px #b88cca20 inset}.moon-orbit:before{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);top:-5px;box-shadow:0 0 18px #efd49b}.moon-glyph{font-size:clamp(130px,18vw,210px);line-height:1;filter:drop-shadow(0 0 28px #f4dca344);transform:translateY(-3px)}.phase-badge{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);white-space:nowrap;border:1px solid #efd49b4d;background:#0d0915cc;border-radius:999px;padding:10px 16px;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.08em}
+    .content{padding:clamp(26px,5vw,56px)}.content h2{font:normal clamp(32px,5vw,50px)/1.1 Georgia,serif;color:#f4d8aa;margin:0 0 12px}.lead{font:normal 19px/1.7 Georgia,serif;color:#eee2eb;margin:0 0 27px}.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.fact{border:1px solid var(--line);background:#ffffff07;border-radius:15px;padding:14px}.fact small{display:block;color:#bbaaaf;margin-bottom:6px}.fact strong{color:#f4dfb8;font-size:17px}.progress{height:8px;background:#ffffff12;border-radius:99px;overflow:hidden;margin-top:9px}.progress span{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--gold),var(--violet));transition:width .7s ease}.updated{margin-top:16px;color:#9f929f;font-size:11px}
+    .section{margin-top:18px;padding:24px}.section-title{display:flex;align-items:center;gap:10px;margin-bottom:17px}.section-title .icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#efd49b20,#bd94d220);border:1px solid #efd49b2f;font-size:20px}.section h2{font:normal 28px Georgia,serif;color:#f2d8a7;margin:0}.guidance{display:grid;grid-template-columns:1fr 1fr;gap:14px}.guidance-card{border-radius:18px;padding:20px;background:#ffffff07;border:1px solid var(--line)}.guidance-card.do{border-color:#72c68a45}.guidance-card.dont{border-color:#d68e8e45}.guidance-card h3{margin:0 0 12px;font:normal 21px Georgia,serif}.guidance-card ul{padding-left:20px;margin:0;color:var(--muted);line-height:1.7}.guidance-card li+li{margin-top:7px}.quote{border-left:3px solid var(--gold);background:linear-gradient(90deg,#efd49b10,transparent);padding:20px 22px;border-radius:0 16px 16px 0;font:normal clamp(19px,3vw,25px)/1.6 Georgia,serif;color:#f2e7ee}.quote footer{font:700 11px/1.4 Inter,system-ui;letter-spacing:.13em;color:#dabb82;margin-top:12px}
+    .energy-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.energy{padding:16px;border:1px solid var(--line);border-radius:16px;background:#ffffff06}.energy-head{display:flex;justify-content:space-between;gap:8px;color:#e9d9e7;font-size:13px}.energy b{color:var(--gold)}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.milestone{position:relative;padding:17px;border:1px solid var(--line);border-radius:16px;background:#ffffff06}.milestone.active{border-color:#efd49b66;background:linear-gradient(145deg,#efd49b12,#bd94d211)}.milestone .symbol{font-size:30px}.milestone h3{font:normal 18px Georgia,serif;color:#f0d8ab;margin:8px 0 5px}.milestone p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.note{color:#9f929f;font-size:11px;line-height:1.55;margin:14px 2px 0}.ritual{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ritual article{padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff06}.ritual .nr{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:linear-gradient(145deg,var(--gold),var(--violet));color:#28192c;font-weight:900}.ritual h3{font:normal 20px Georgia,serif;color:#f2d8a7;margin:12px 0 7px}.ritual p{color:var(--muted);line-height:1.6;margin:0}.affirmation{text-align:center;padding:35px 24px}.affirmation p{max-width:760px;margin:10px auto 20px;font:normal clamp(23px,4vw,35px)/1.5 Georgia,serif;color:#f7e7cb}.copy{border:1px solid #e4c98b6a;border-radius:999px;background:#ffffff0b;color:#f0dab0;padding:10px 15px;cursor:pointer}.copy:hover{background:#ffffff12}.copy-status{height:18px;color:#9ed6aa;font-size:11px;margin-top:8px}
+    @media(max-width:900px){.top{grid-template-columns:1fr}.nav{justify-content:flex-start}.moon-main{grid-template-columns:1fr}.visual{min-height:390px}.energy-grid,.timeline{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:620px){.wrap{padding-inline:12px}.nav{flex-wrap:nowrap;overflow:auto;justify-content:flex-start;padding-bottom:5px}.nav a{flex:0 0 auto}.logout{justify-self:start}.hero{margin-top:18px}.content,.section{padding:20px}.facts,.guidance,.energy-grid,.timeline,.ritual{grid-template-columns:1fr}.visual{min-height:340px}.moon-orbit{width:245px}.moon-glyph{font-size:155px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <div class="brand">SEELENKRAFT · TAROT</div>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="/index.html">Start</a><a href="/tarot.html">Tarot</a><a class="active" href="/mondphase.html" aria-current="page">Mondphase</a><a href="/schumann.html">Schumann</a><a href="/portaltage.html">Portaltage</a><a href="/profil.html">Mein Zugang</a><a href="/admin.html">Admin</a>
+    </nav>
+    <button class="logout" type="button" onclick="logout()">Abmelden</button>
+  </header>
 
-.moon-icon{
-    font-size:120px;
-    line-height:1;
-    margin-bottom:15px;
-}
+  <section class="hero">
+    <div class="eyebrow"><span class="live-dot"></span>AKTUELLER MONDRHYTHMUS</div>
+    <h1>Im Rhythmus des Mondes</h1>
+    <p>Entdecke die heutige Mondphase, ihre symbolische Qualität und sanfte Impulse für deinen Tag. Die astronomischen Werte werden beim Öffnen der Seite neu berechnet.</p>
+  </section>
 
-.moon-guidance{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin:25px 0;
-}
-
-.moon-do,
-.moon-dont{
-    padding:20px;
-    border-radius:18px;
-    background:#ffffff08;
-}
-
-.moon-do{
-    border:1px solid #72c68a55;
-}
-
-.moon-dont{
-    border:1px solid #d68e8e55;
-}
-
-.moon-message{
-    margin-top:25px;
-    padding:22px;
-    border-left:3px solid #e6ca8d;
-    background:#e6ca8d0c;
-    border-radius:16px;
-}
-
-.moon-energy{
-    margin-top:25px;
-    padding:20px;
-    border-radius:18px;
-    background:#ffffff08;
-}
-
-.energy-row{
-    margin:12px 0;
-}
-
-.energy-bar{
-    height:10px;
-    border-radius:99px;
-    background:#ffffff15;
-}
-
-.energy-fill{
-    height:100%;
-    border-radius:99px;
-    background:
-        linear-gradient(
-            90deg,
-            #f4dca3,
-            #bd94d2
-        );
-}
-
-@media(max-width:800px){
-
-    .moon-guidance{
-        grid-template-columns:1fr;
-    }
-
-}</style></head><body><main class="wrap"><header class="top"><div class="brand">SEELENKRAFT · TAROT</div><nav class="nav"><a class="" href="/index.html">Start</a><a class="" href="/tarot.html">Tarot</a><a class="active" href="/mondphase.html">Mondphase</a><a class="" href="/schumann.html">Schumann</a><a class="" href="/portaltage.html">Portaltage</a><a class="" href="/profil.html">Mein Zugang</a><a class="" href="/admin.html">Admin</a></nav><button class="logout" onclick="logout()">Abmelden</button></header><section class="hero"><div class="eyebrow">MONDRHYTHMUS</div><h1>Die aktuelle Mondphase.</h1><p id="moon"></p></section><section class="panel">
-
-    <div class="moon-phase-card">
-
-        <div id="moonIcon" class="moon-icon">
-            🌙
-        </div>
-
-        <h2 id="mt"></h2>
-
-        <p id="moon"></p>
-
+  <section class="panel moon-main" aria-labelledby="phaseTitle">
+    <div class="visual">
+      <div class="moon-orbit"><div id="moonGlyph" class="moon-glyph" aria-hidden="true">🌙</div></div>
+      <div id="phaseBadge" class="phase-badge">MONDPHASE WIRD BERECHNET</div>
     </div>
-
-    <div class="moon-guidance">
-
-        <div class="moon-do">
-
-            <h3>✅ Unterstützt heute</h3>
-
-            <ul id="moonDoList"></ul>
-
-        </div>
-
-        <div class="moon-dont">
-
-            <h3>⚠️ Heute besser vermeiden</h3>
-
-            <ul id="moonDontList"></ul>
-
-        </div>
-
+    <div class="content">
+      <div class="eyebrow" id="todayDate">HEUTE</div>
+      <h2 id="phaseTitle">Aktuelle Mondphase</h2>
+      <p class="lead" id="phaseIntro">Die Mondinformationen werden geladen.</p>
+      <div class="facts">
+        <div class="fact"><small>Beleuchtung</small><strong id="illumination">–</strong><div class="progress"><span id="illuminationBar"></span></div></div>
+        <div class="fact"><small>Alter im Mondzyklus</small><strong id="moonAge">–</strong><div class="progress"><span id="ageBar"></span></div></div>
+        <div class="fact"><small>Tendenz</small><strong id="trend">–</strong></div>
+        <div class="fact"><small>Nächster Hauptpunkt</small><strong id="nextMilestone">–</strong></div>
+      </div>
+      <div class="updated" id="updatedAt"></div>
     </div>
+  </section>
 
-    <div class="moon-message">
-
-        <h3>✨ Persönlicher Mondimpuls</h3>
-
-        <p id="moonMessage"></p>
-
+  <section class="panel section">
+    <div class="section-title"><div class="icon">☾</div><h2>Was diese Phase begleitet</h2></div>
+    <div class="guidance">
+      <div class="guidance-card do"><h3>✓ Unterstützt heute</h3><ul id="doList"></ul></div>
+      <div class="guidance-card dont"><h3>◇ Heute sanfter angehen</h3><ul id="dontList"></ul></div>
     </div>
+  </section>
 
-    <div class="moon-energy">
+  <section class="panel section">
+    <div class="section-title"><div class="icon">✦</div><h2>Dein Mondimpuls</h2></div>
+    <blockquote class="quote" id="moonMessage"><footer>SEELENKRAFT · TAGESIMPULS</footer></blockquote>
+  </section>
 
-        <h3>🌙 Mondenergie heute</h3>
+  <section class="panel section">
+    <div class="section-title"><div class="icon">◌</div><h2>Symbolisches Energieprofil</h2></div>
+    <div class="energy-grid" id="energyGrid"></div>
+    <p class="note">Die Energieanzeigen sind spirituelle Deutungsimpulse zur jeweiligen Mondphase und keine naturwissenschaftlichen Messwerte.</p>
+  </section>
 
-        <div class="energy-row">
-            <span>Intuition</span>
-            <div class="energy-bar">
-                <div id="barIntuition" class="energy-fill"></div>
-            </div>
-        </div>
+  <section class="panel section">
+    <div class="section-title"><div class="icon">◔</div><h2>Die nächsten Hauptphasen</h2></div>
+    <div class="timeline" id="timeline"></div>
+    <p class="note">Zeitangaben sind astronomische Näherungswerte auf Grundlage eines mittleren Mondzyklus und können von offiziellen Ephemeriden leicht abweichen.</p>
+  </section>
 
-        <div class="energy-row">
-            <span>Klarheit</span>
-            <div class="energy-bar">
-                <div id="barClarity" class="energy-fill"></div>
-            </div>
-        </div>
+  <section class="panel section">
+    <div class="section-title"><div class="icon">✧</div><h2>Kleines Mondritual für heute</h2></div>
+    <div class="ritual" id="ritual"></div>
+  </section>
 
-        <div class="energy-row">
-            <span>Aktivität</span>
-            <div class="energy-bar">
-                <div id="barActivity" class="energy-fill"></div>
-            </div>
-        </div>
+  <section class="panel affirmation">
+    <div class="eyebrow">AFFIRMATION DES TAGES</div>
+    <p id="affirmation">„Ich vertraue meinem eigenen Rhythmus.“</p>
+    <button class="copy" type="button" id="copyAffirmation">Affirmation kopieren</button>
+    <div class="copy-status" id="copyStatus" aria-live="polite"></div>
+  </section>
+</main>
 
-        <div class="energy-row">
-            <span>Rückzug</span>
-            <div class="energy-bar">
-                <div id="barRetreat" class="energy-fill"></div>
-            </div>
-        </div>
+<script>
+'use strict';
+const SYNODIC_MONTH = 29.530588853;
+const KNOWN_NEW_MOON = Date.parse('2000-01-06T18:14:00Z');
+const DAY_MS = 86400000;
 
-    </div>
+const phases = [
+ {name:'Neumond',glyph:'🌑',intro:'Eine stille Schwelle im Mondzyklus. Symbolisch steht sie für Sammlung, innere Ausrichtung und einen bewussten Neubeginn.',do:['Eine klare Absicht für den neuen Zyklus formulieren','Ruheinseln schaffen und nach innen lauschen','Ein kleines, realistisches Vorhaben beginnen'],dont:['Dich zu schnellen Ergebnissen drängen','Zu viele Ziele gleichzeitig setzen','Innere Unruhe vorschnell bewerten'],message:'Nicht jeder Neubeginn muss laut sein. Manchmal genügt ein stilles Ja zu dem, was in dir wachsen möchte.',energy:{Intuition:88,Klarheit:62,Aktivität:35,Rückzug:92},ritual:['Zünde bewusst ein Licht an und werde für drei Atemzüge still.','Schreibe einen einzigen Herzenswunsch in einem klaren Satz auf.','Lege den Zettel an einen geschützten Ort und lass die Absicht ruhen.'],affirmation:'„Ich öffne mich still und klar für einen neuen Anfang.“'},
+ {name:'Zunehmende Sichel',glyph:'🌒',intro:'Die erste Bewegung wird sichtbar. Diese Phase wird mit Mut, Vertrauen und dem behutsamen Nähren neuer Ideen verbunden.',do:['Erste konkrete Schritte setzen','Neue Gewohnheiten freundlich stärken','Geduld mit kleinen Fortschritten haben'],dont:['Zarte Ideen vorschnell aufgeben','Dich mit anderen vergleichen','Perfektion mit Fortschritt verwechseln'],message:'Was heute noch klein erscheint, kann durch beständige Aufmerksamkeit Kraft gewinnen.',energy:{Intuition:74,Klarheit:68,Aktivität:58,Rückzug:55},ritual:['Erinnere dich an deine wichtigste Absicht.','Wähle den kleinstmöglichen nächsten Schritt.','Schließe den Tag mit einem Satz der Anerkennung ab.'],affirmation:'„Ich nähre das Neue mit Geduld und Vertrauen.“'},
+ {name:'Erstes Viertel',glyph:'🌓',intro:'Licht und Schatten begegnen einander. Symbolisch lädt diese Phase zu Entscheidung, Ausrichtung und konstruktiver Bewegung ein.',do:['Prioritäten bewusst ordnen','Eine aufgeschobene Entscheidung angehen','Widerstände als Hinweis nutzen'],dont:['In Grübeleien stecken bleiben','Jeden Konflikt vermeiden wollen','Mehr versprechen, als du tragen kannst'],message:'Klarheit entsteht nicht immer vor dem ersten Schritt. Oft zeigt sie sich, während du gehst.',energy:{Intuition:65,Klarheit:82,Aktivität:80,Rückzug:36},ritual:['Benenne eine Entscheidung, die Raum verlangt.','Notiere, was dafür und was dagegen spricht.','Wähle eine konkrete Handlung für heute.'],affirmation:'„Ich entscheide in Ruhe und gehe meinen nächsten Schritt.“'},
+ {name:'Zunehmender Mond',glyph:'🌔',intro:'Die Energie richtet sich auf Wachstum und Verfeinerung. Jetzt dürfen Vorhaben Struktur, Ausdauer und Aufmerksamkeit erhalten.',do:['Bestehende Projekte weiterentwickeln','Wissen vertiefen und Fähigkeiten üben','Konstruktives Feedback einholen'],dont:['Jede Kleinigkeit neu beginnen','Warnzeichen aus Ungeduld übergehen','Pausen als Zeitverlust betrachten'],message:'Wachstum braucht nicht mehr Druck, sondern eine Richtung, die du beständig nährst.',energy:{Intuition:70,Klarheit:78,Aktivität:88,Rückzug:30},ritual:['Wähle ein Vorhaben, das bereits begonnen hat.','Entferne eine kleine Hürde aus dem Weg.','Würdige sichtbar, was schon entstanden ist.'],affirmation:'„Ich wachse beständig und ehre jeden Fortschritt.“'},
+ {name:'Vollmond',glyph:'🌕',intro:'Der Mond zeigt sich in seiner ganzen Helligkeit. Symbolisch stehen Sichtbarkeit, Erkenntnis, Fülle und emotionales Bewusstsein im Mittelpunkt.',do:['Erreichtes bewusst würdigen','Gefühle ehrlich und ruhig wahrnehmen','Dankbarkeit konkret ausdrücken'],dont:['In intensiven Momenten überreagieren','Alles gleichzeitig klären wollen','Erholung und Schlaf vernachlässigen'],message:'Im hellen Licht darfst du erkennen, was erfüllt ist, was gesehen werden will und was du dankbar loslassen kannst.',energy:{Intuition:96,Klarheit:84,Aktivität:72,Rückzug:48},ritual:['Blicke auf das, was seit dem Neumond entstanden ist.','Notiere drei Dinge, für die du dankbar bist.','Gib einem abgeschlossenen Thema bewusst Frieden.'],affirmation:'„Ich erkenne meine Fülle und lasse in Frieden los.“'},
+ {name:'Abnehmender Mond',glyph:'🌖',intro:'Nach der Fülle beginnt die Integration. Diese Phase wird mit Sortieren, Vereinfachen und bewusstem Loslassen verbunden.',do:['Aufräumen und offene Enden klären','Erfahrungen auswerten','Belastendes Schritt für Schritt reduzieren'],dont:['Neue Großprojekte erzwingen','An Überholtem nur aus Gewohnheit festhalten','Erkenntnisse sofort in Leistung verwandeln'],message:'Loslassen bedeutet nicht Verlust. Es schafft Raum für das, was wieder leichter zu dir passen darf.',energy:{Intuition:82,Klarheit:79,Aktivität:60,Rückzug:66},ritual:['Wähle einen kleinen Bereich zum Ordnen.','Frage dich, was du nicht mehr mittragen möchtest.','Verabschiede eine Sache bewusst und freundlich.'],affirmation:'„Ich löse, was schwer geworden ist, und schaffe neuen Raum.“'},
+ {name:'Letztes Viertel',glyph:'🌗',intro:'Diese Phase lädt zur ehrlichen Rückschau ein. Korrektur, Vergebung und innere Balance können nun besonders wertvoll sein.',do:['Aus Erfahrungen eine Lehre ziehen','Grenzen neu ausrichten','Unnötige Verpflichtungen prüfen'],dont:['Alte Fehler gegen dich verwenden','Entscheidungen aus Schuldgefühl treffen','Erschöpfung ignorieren'],message:'Du musst die Vergangenheit nicht verändern, um ihre Weisheit für deinen nächsten Weg mitzunehmen.',energy:{Intuition:84,Klarheit:86,Aktivität:46,Rückzug:78},ritual:['Blicke ohne Urteil auf den vergangenen Zyklus.','Schreibe eine Erkenntnis und eine Entlastung auf.','Beende den Tag mit einem freundlichen inneren Satz.'],affirmation:'„Ich lerne, vergebe und richte mich neu aus.“'},
+ {name:'Abnehmende Sichel',glyph:'🌘',intro:'Der Zyklus wird stiller. Regeneration, Rückzug und das Vertrauen in Pausen stehen symbolisch im Vordergrund.',do:['Kräfte schonen und ausreichend ruhen','Meditation oder stille Zeit wählen','Unerledigtes bewusst auf später verschieben'],dont:['Dich zu ständiger Produktivität zwingen','Jede Leere sofort füllen','Neue Verpflichtungen aus schlechtem Gewissen annehmen'],message:'Auch die Pause gehört zum Weg. In der Stille sammelt sich jene Kraft, aus der Neues entstehen kann.',energy:{Intuition:92,Klarheit:58,Aktivität:24,Rückzug:96},ritual:['Reduziere für einige Minuten äußere Reize.','Atme langsam und lass den Tag innerlich ausklingen.','Erlaube dir, nichts lösen zu müssen.'],affirmation:'„Ich ruhe in mir und vertraue der stillen Erneuerung.“'}
+];
 
-</section></main><script>'use strict';const api=async(path,options={})=>{const r=await fetch('/api/'+path,{credentials:'same-origin',headers:{'Content-Type':'application/json'},cache:'no-store',...options});const v=await r.json().catch(()=>({error:'Antwort konnte nicht gelesen werden.'}));if(!r.ok)throw Error(v.error||'Anfrage fehlgeschlagen.');return v};async function logout(){try{await api('logout',{method:'POST',body:'{}'})}finally{location.href='/'}}const n=['Neumond','Zunehmende Sichel','Erstes Viertel','Zunehmender Mond','Vollmond','Abnehmender Mond','Letztes Viertel','Abnehmende Sichel'],a=Date.parse('2026-09-11T03:27:00Z'),f=(((Date.now()-a)/86400000)%29.530588853+29.530588853)%29.530588853/29.530588853,i=Math.floor(((f+1/16)%1)*8);document.getElementById(
-    "moon"
-).textContent =n[i]+' · '+new Date().toLocaleDateString('de-AT',{day:'2-digit',month:'long',year:'numeric'});mt.textContent=n[i];mi.textContent='Nimm dir heute einen Moment, um wahrzunehmen, was wachsen darf und was bereits genug Raum eingenommen hat.';</script></body></html>
+function phaseData(date=new Date()){
+  const days=((date.getTime()-KNOWN_NEW_MOON)/DAY_MS);
+  const age=((days%SYNODIC_MONTH)+SYNODIC_MONTH)%SYNODIC_MONTH;
+  const fraction=age/SYNODIC_MONTH;
+  const index=Math.floor(((fraction+1/16)%1)*8);
+  const illumination=(1-Math.cos(2*Math.PI*fraction))/2;
+  return {age,fraction,index,illumination};
+}
+function fmtDate(date,withTime=false){return new Intl.DateTimeFormat('de-AT',withTime?{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}:{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(date)}
+function nextPrincipalPhases(now, fraction){
+ const points=[{f:0,name:'Neumond',glyph:'🌑'},{f:.25,name:'Erstes Viertel',glyph:'🌓'},{f:.5,name:'Vollmond',glyph:'🌕'},{f:.75,name:'Letztes Viertel',glyph:'🌗'}];
+ return points.map(p=>{let delta=p.f-fraction;if(delta<=.001)delta+=1;return {...p,date:new Date(now.getTime()+delta*SYNODIC_MONTH*DAY_MS),days:delta*SYNODIC_MONTH}}).sort((a,b)=>a.date-b.date);
+}
+function render(){
+ const now=new Date(), data=phaseData(now), p=phases[data.index], upcoming=nextPrincipalPhases(now,data.fraction);
+ document.getElementById('moonGlyph').textContent=p.glyph;
+ document.getElementById('phaseBadge').textContent=p.name.toUpperCase();
+ document.getElementById('phaseTitle').textContent=p.name;
+ document.getElementById('phaseIntro').textContent=p.intro;
+ document.getElementById('todayDate').textContent=fmtDate(now).toUpperCase();
+ const illum=Math.round(data.illumination*100);
+ document.getElementById('illumination').textContent=illum+' %';
+ document.getElementById('illuminationBar').style.width=illum+'%';
+ document.getElementById('moonAge').textContent=data.age.toFixed(1).replace('.',',')+' von 29,5 Tagen';
+ document.getElementById('ageBar').style.width=(data.fraction*100).toFixed(1)+'%';
+ document.getElementById('trend').textContent=data.fraction<.5?'Zunehmend':'Abnehmend';
+ document.getElementById('nextMilestone').textContent=upcoming[0].name+' · '+fmtDate(upcoming[0].date,true);
+ document.getElementById('updatedAt').textContent='Berechnet am '+fmtDate(now,true)+' Uhr';
+ document.getElementById('doList').innerHTML=p.do.map(x=>'<li>'+x+'</li>').join('');
+ document.getElementById('dontList').innerHTML=p.dont.map(x=>'<li>'+x+'</li>').join('');
+ document.getElementById('moonMessage').childNodes[0].textContent='„'+p.message+'“';
+ document.getElementById('energyGrid').innerHTML=Object.entries(p.energy).map(([k,v])=>'<div class="energy"><div class="energy-head"><span>'+k+'</span><b>'+v+' %</b></div><div class="progress"><span style="width:'+v+'%"></span></div></div>').join('');
+ document.getElementById('timeline').innerHTML=upcoming.map((x,i)=>'<article class="milestone '+(i===0?'active':'')+'"><div class="symbol">'+x.glyph+'</div><h3>'+x.name+'</h3><p>'+fmtDate(x.date,true)+' Uhr</p></article>').join('');
+ document.getElementById('ritual').innerHTML=p.ritual.map((x,i)=>'<article><span class="nr">'+(i+1)+'</span><h3>'+['Ankommen','Ausrichten','Nachklingen'][i]+'</h3><p>'+x+'</p></article>').join('');
+ document.getElementById('affirmation').textContent=p.affirmation;
+ document.title=p.name+' | Seelenkraft Tarot';
+}
+async function logout(){
+ try{await fetch('/api/logout',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:'{}'});}catch(e){}finally{location.href='/';}
+}
+document.getElementById('copyAffirmation').addEventListener('click',async()=>{
+ const text=document.getElementById('affirmation').textContent;
+ try{await navigator.clipboard.writeText(text);document.getElementById('copyStatus').textContent='Affirmation wurde kopiert.';}
+ catch(e){document.getElementById('copyStatus').textContent='Bitte markiere den Text und kopiere ihn manuell.';}
+ setTimeout(()=>document.getElementById('copyStatus').textContent='',2500);
+});
+render();
+</script>
+</body>
+</html>
