@@ -22,7 +22,109 @@ function expiryDetails(expiresAt){if(!expiresAt)return{label:'Unbegrenzt',date:'
 function renderUsers(){const list=document.getElementById('userList');if(!list)return;const term=(document.getElementById('userSearch')?.value||'').trim().toLowerCase();const users=cachedUsers.filter(u=>u.username.toLowerCase().includes(term));list.replaceChildren();if(!users.length){const empty=document.createElement('div');empty.className='empty-users';empty.textContent=term?'Keine passenden Mitglieder gefunden.':'Noch keine Mitglieder vorhanden.';list.append(empty);return}for(const u of users){const row=document.createElement('div');row.className='user-row';const info=document.createElement('div');info.className='user-info';const name=document.createElement('strong');name.className='user-name';name.textContent=u.username;const expiry=document.createElement('div');expiry.className='user-expiry';const details=expiryDetails(u.expires_at);const badge=document.createElement('span');badge.className='expiry-badge '+details.className;badge.textContent=details.label;const date=document.createElement('span');date.textContent=details.date;expiry.append(badge,date);info.append(name,expiry);const controls=document.createElement('div');controls.className='user-actions';const change=document.createElement('button');change.type='button';change.textContent='Passwort ändern';change.disabled=u.username==='admin';change.onclick=async()=>{const pass=prompt('Neues Passwort für '+u.username+' (mindestens 10 Zeichen):');if(pass===null)return;try{await api('admin/users',{method:'PUT',body:JSON.stringify({username:u.username,password:pass})});showStatus('Passwort von '+u.username+' geändert.')}catch(e){showStatus(e.message)}};const del=document.createElement('button');del.type='button';del.textContent='Löschen';del.disabled=u.username==='admin';del.onclick=async()=>{if(!confirm('Zugang '+u.username+' wirklich löschen?'))return;try{await api('admin/users',{method:'DELETE',body:JSON.stringify({username:u.username})});showStatus('Nutzer gelöscht.');await refreshUsers()}catch(e){showStatus(e.message)}};controls.append(change,del);row.append(info,controls);list.append(row)}}
 async function refreshUsers(){const data=await api('admin/users');cachedUsers=data.users||[];const members=cachedUsers.filter(u=>u.username!=='admin');const soon=members.filter(u=>{const d=expiryDetails(u.expires_at).days;return d!==null&&d<=30}).length;const active=document.getElementById('activeUserCount'),expiring=document.getElementById('expiringUserCount');if(active)active.textContent=String(members.length);if(expiring)expiring.textContent=String(soon);renderUsers()}
 function initAdmin(){const panel=document.getElementById('adminPanel');panel.classList.remove('hidden');const form=document.getElementById('createUser'),type=document.getElementById('durationType'),custom=document.getElementById('customExpiryField'),date=document.getElementById('expiresDate'),search=document.getElementById('userSearch');const syncExpiry=()=>{const show=type?.value==='custom';custom?.classList.toggle('hidden',!show);if(date){date.required=show;if(show){const tomorrow=new Date(Date.now()+86400000);date.min=tomorrow.toISOString().slice(0,10)}else date.value=''}};if(type){type.addEventListener('change',syncExpiry);syncExpiry()}if(search)search.addEventListener('input',renderUsers);form.onsubmit=async e=>{e.preventDefault();const f=e.currentTarget;const username=f.elements.username.value.trim(),password=f.elements.password.value,duration_type=f.elements.duration_type.value,expires_date=f.elements.expires_date?.value||'';try{await api('admin/users',{method:'POST',body:JSON.stringify({username,password,duration_type,expires_date})});f.reset();if(type)type.value='30';syncExpiry();showStatus('Zugang für '+username+' gespeichert.');await refreshUsers()}catch(err){showStatus(err.message)}};refreshUsers().catch(e=>showStatus(e.message))}
-async function openMember(){const data=await api('member');document.getElementById('privateArea').innerHTML=data.markup;document.getElementById('privateArea').classList.remove('hidden');document.getElementById('publicArea').classList.add('hidden');initMember(data);renderDaily();document.getElementById('logout').onclick=async()=>{try{await api('logout',{method:'POST',body:'{}'})}finally{location.reload()}};if(data.role==='admin')initAdmin()}
+async function openMember() {
+  const data = await api("member");
+
+  document.getElementById("privateArea").innerHTML =
+    data.markup;
+
+  document
+    .getElementById("privateArea")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("publicArea")
+    .classList.add("hidden");
+
+  const logoutButton =
+    document.getElementById("logout");
+
+  if (logoutButton) {
+    const accessStatus =
+      document.createElement("div");
+
+    accessStatus.className = "access-status";
+
+    if (data.role === "admin") {
+      accessStatus.innerHTML =
+        "<strong>Administrator</strong>" +
+        "<span>Unbegrenzter Zugang</span>";
+    } else if (!data.expires_at) {
+      accessStatus.innerHTML =
+        "<strong>Mitgliedszugang</strong>" +
+        "<span>Unbegrenzt gültig</span>";
+    } else {
+      const expiresAt = Number(
+        data.expires_at
+      );
+
+      const remainingDays = Math.max(
+        0,
+        Math.ceil(
+          (expiresAt - Date.now()) /
+          86400000
+        )
+      );
+
+      const expiryDate = new Date(
+        expiresAt
+      ).toLocaleDateString("de-AT", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      });
+
+      let statusClass = "access-ok";
+      let remainingText =
+        `Noch ${remainingDays} Tage`;
+
+      if (remainingDays === 1) {
+        remainingText = "Noch 1 Tag";
+      }
+
+      if (remainingDays === 0) {
+        remainingText = "Läuft heute ab";
+        statusClass = "access-urgent";
+      } else if (remainingDays <= 7) {
+        statusClass = "access-urgent";
+      } else if (remainingDays <= 30) {
+        statusClass = "access-soon";
+      }
+
+      accessStatus.classList.add(
+        statusClass
+      );
+
+      accessStatus.innerHTML =
+        `<strong>${remainingText}</strong>` +
+        `<span>Gültig bis ${expiryDate}</span>`;
+    }
+
+    logoutButton.insertAdjacentElement(
+      "beforebegin",
+      accessStatus
+    );
+  }
+
+  initMember(data);
+  renderDaily();
+
+  document.getElementById("logout").onclick =
+    async () => {
+      try {
+        await api("logout", {
+          method: "POST",
+          body: "{}"
+        });
+      } finally {
+        location.reload();
+      }
+    };
+
+  if (data.role === "admin") {
+    initAdmin();
+  }
+}const data=await api('member');document.getElementById('privateArea').innerHTML=data.markup;document.getElementById('privateArea').classList.remove('hidden');document.getElementById('publicArea').classList.add('hidden');initMember(data);renderDaily();document.getElementById('logout').onclick=async()=>{try{await api('logout',{method:'POST',body:'{}'})}finally{location.reload()}};if(data.role==='admin')initAdmin()}
 document.getElementById('previewBtn').onclick=()=>{document.getElementById('preview').classList.remove('hidden');document.getElementById('previewBtn').disabled=true;document.getElementById('previewBtn').textContent='Deine Karte wurde gezogen'};
 document.getElementById('loginForm').onsubmit=async e=>{e.preventDefault();const b=document.getElementById('loginBtn');b.disabled=true;const err=document.getElementById('loginError');err.textContent='';try{const username=document.getElementById('user').value.trim(),password=document.getElementById('pass').value;await api('login',{method:'POST',body:JSON.stringify({username,password})});document.getElementById('pass').value='';await openMember()}catch(ex){err.textContent=ex.message;document.getElementById('pass').value='';b.disabled=false}};
 api('me').then(v=>{if(v.authenticated)return openMember()}).catch(()=>{});
